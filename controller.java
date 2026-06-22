@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -45,7 +47,28 @@ public class controller {
 
     @FXML
     void onbutton(ActionEvent event) {
-
+        String name = textfield_name.getText();
+        String birth = datepicker_dob.getValue().toString();
+        String department="";
+        if(button_gtr.isSelected()) {
+            department = "GTR";
+        } else if(button_gic.isSelected()) {
+            department = "Gic";
+        } else if(button_gca.isSelected()) {
+            department = "GCA";
+        }
+        ArrayList<String> courses = new ArrayList<>();
+        if(checkbox_micro.isSelected()) {
+            courses.add("Microcontroller");
+        }
+        if(checkbox_network.isSelected()) {
+            courses.add("Network");
+        if(checkbox_oop.isSelected()) {
+            courses.add("OOP");
+        }
     }
+    label_result.setText("Name: " + name + "\nBirth: " + birth + "\nDepartment: " + department + "\nCourses: " + String.join(", ", courses));
+}
+
 
 }
